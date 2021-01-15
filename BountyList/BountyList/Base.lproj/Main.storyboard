@@ -31,20 +31,20 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luffy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-cz-xI5">
-                                            <rect key="frame" x="333" y="55" width="61" height="30"/>
+                                            <rect key="frame" x="146" y="55" width="248" height="30"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eS-Tu-liy">
-                                            <rect key="frame" x="273.66666666666669" y="99" width="180" height="36"/>
+                                            <rect key="frame" x="180" y="99" width="180" height="36"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Jee-cz-xI5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B6j-tb-4m2" secondAttribute="trailing" constant="33" id="BA1-ub-rRq"/>
+                                        <constraint firstItem="Jee-cz-xI5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="B6j-tb-4m2" secondAttribute="trailing" constant="33" id="BA1-ub-rRq"/>
                                         <constraint firstItem="Jee-cz-xI5" firstAttribute="centerY" secondItem="Xb1-0U-vp3" secondAttribute="centerY" constant="-30" id="IaC-u7-sqK"/>
                                         <constraint firstItem="B6j-tb-4m2" firstAttribute="height" secondItem="Xb1-0U-vp3" secondAttribute="height" multiplier="0.75" constant="-10" id="PDg-G5-F6g"/>
                                         <constraint firstItem="4eS-Tu-liy" firstAttribute="centerX" secondItem="Jee-cz-xI5" secondAttribute="centerX" id="StA-ez-2SN"/>
