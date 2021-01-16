@@ -7,7 +7,9 @@
 
 import UIKit
 
-class BountyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+//flowout프로토콜은 자유롭게 우리가 배치하기위해 추가함.
+class BountyViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     //******************************** MVVM ******************************************
 
@@ -48,48 +50,46 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
     }
     
-    //UITableViewDataSource 질문에 대한 답 .
-    //셸이 몇개?
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    //UICollectionViewDataSource 프로토콜
+    //몇개를 보여줄까요?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfBountyInfoList
     }
     
-    //셸을 어떻게 표현할 거니?
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //부드럽게 박스 까는법.
-        //withIdentifier하면 id를 쓰라는말.
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath) as? ListCell else{
-            return UITableViewCell()
+    //UICollectionViewDataSource 프로토콜
+    //셸은 어떻게 표현할까요? 에 대한 답
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
+            return UICollectionViewCell()
         }
-
-        //뷰에 넣어주는 부분들
-        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.item)
         cell.update(info: bountyInfo)
         return cell
     }
     
-    //UITableViewDelegate 질문에 대한 답
-    //클릭 했을 때, 어떻게 할꺼야?
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //UICollectionViewDelegate 프로토콜
+    //셸이 클릭되었을때 어쩔까요? 에 대한 답
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //뒷부분에 sender는 showDetail로 넘어가기 전에 넘겨주어야할 것을 prepare 로 넘겨준다.
         //showDetail은 segue에 id임.
-        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
+        performSegue(withIdentifier: "showDetail", sender: indexPath.item)
     }
+    
+    //UICollectionViewDelegateFlowLayout 프로토콜
+    //cell사이즈를  계산할꺼 - 다양한 디바이스에서 일관적인 디자인을 보여주기 위해 에 대한 답
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 10
+        let textAreaHeight: CGFloat = 65
+        
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing)/2
+        let height: CGFloat = width * 10/7 + textAreaHeight
+        return CGSize(width: width, height: height)
+    }
+    
 }
 
-class ListCell: UITableViewCell{
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bountyLabel: UILabel!
-    
-    func update(info: BountyInfo) {
-        self.imageView?.image = info.image
-        self.nameLabel.text = info.name
-        self.bountyLabel.text = "\(info.bounty)"
-    }
-}
 
 class BountyViewModel {
     let bountyInfoList: [BountyInfo] = [
@@ -118,3 +118,16 @@ class BountyViewModel {
         return sortedList[index]
     }
 }
+
+class GridCell: UICollectionViewCell{
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var bountyLabel: UILabel!
+    
+    func update(info: BountyInfo) {
+        self.imgView?.image = info.image
+        self.nameLabel.text = info.name
+        self.bountyLabel.text = "\(info.bounty)"
+    }
+}
+
