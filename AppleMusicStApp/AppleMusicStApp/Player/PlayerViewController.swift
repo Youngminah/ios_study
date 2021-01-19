@@ -63,7 +63,6 @@ class PlayerViewController: UIViewController {
     @IBAction func seek(_ sender: UISlider) {
         // TODO: 시킹 구현
         guard let currentItem = simplePlayer.currentItem else { return }
-        
         let position = Double( sender.value)   // 0.... 1 사이의 비율로 나옴.
         let seconds = position * currentItem.duration.seconds
         let time = CMTime(seconds: seconds, preferredTimescale: 1000)
@@ -99,7 +98,6 @@ extension PlayerViewController {
     func updateTime(time: CMTime) {
         // print(time.seconds)
         // currentTime label, totalduration label, slider
-        
         // TODO: 시간정보 업데이트, 심플플레이어 이용해서 수정
         currentTimeLabel.text = secondsToString(sec: simplePlayer.currentTime)   // 3.1234 >> 00:03
         totalDurationLabel.text = secondsToString(sec: simplePlayer.totalDurationTime)  // 39.2045  >> 00:39

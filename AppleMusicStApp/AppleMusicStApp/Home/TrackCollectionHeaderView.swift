@@ -25,7 +25,6 @@ class TrackCollectionHeaderView: UICollectionReusableView {
         // TODO: 헤더뷰 업데이트 하기
         self.item = item
         guard let track = item.convertToTrack() else { return }
-        
         self.thumbnailImageView.image = track.artwork
         self.descriptionLabel.text = "Today's pick is \(track.artist)'s album - \(track.albumName), Let's listen"
     }

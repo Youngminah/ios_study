@@ -30,7 +30,6 @@ extension HomeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrackCollecionViewCell", for: indexPath) as? TrackCollecionViewCell else {
             return UICollectionViewCell()
         }
-        
         let track = trackMangager.track(at: indexPath.item)
         cell.updateUI(item: track)
         
@@ -55,16 +54,13 @@ extension HomeViewController: UICollectionViewDataSource {
             header.update(with: item)
             header.tapHandler = { item -> Void in
                 //Player를 띄운다.
-                
                 let playerStoryboard = UIStoryboard.init(name: "Player", bundle: nil)
                 guard let playerVC = playerStoryboard.instantiateViewController(identifier: "PlayerViewController") as? PlayerViewController else {
                     return
                 }
                 playerVC.simplePlayer.replaceCurrentItem(with: item)
                 self.present(playerVC, animated: true, completion: nil)
-                
             }
-            
             // TODO: 헤더 구성하기
             return header
         default:
@@ -92,7 +88,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // 20 - card(width) - 20 - card(width) - 20
         // TODO: 셀사이즈 구하기
-        
         let itemSpacing: CGFloat = 20
         let margin:CGFloat = 20
         let width = (collectionView.bounds.width - itemSpacing - margin*2)/2

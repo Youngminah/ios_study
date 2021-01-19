@@ -26,6 +26,5 @@ class TrackCollecionViewCell: UICollectionViewCell {
         trackThumbnail.image = track.artwork
         trackTitle.text = track.title
         trackArtist.text = track.artist
-        
     }
 }
