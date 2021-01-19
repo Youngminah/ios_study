@@ -72,7 +72,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YhE-LU-nhG" customClass="TrackCollectionHeaderView" customModule="AppleMusicStApp" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TrackCollectionHeaderView" id="YhE-LU-nhG" customClass="TrackCollectionHeaderView" customModule="AppleMusicStApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -82,7 +82,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rs2-Dy-xJp">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rs2-Dy-xJp">
                                             <rect key="frame" x="28" y="66" width="366" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="hcp-XM-btc"/>
