@@ -39,6 +39,8 @@ extension SearchViewController: UISearchBarDelegate{
         SearchAPI.search(searchTerm){ movies in
             print("-->몇개 넘어왔어?: \(movies.count), 첫번째꺼 제목: \(movies.first?.title)")
         }
+    
+        
     }
 }
 
