@@ -7,17 +7,57 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
+    var moives: [Movie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension SearchViewController: UICollectionViewDataSource{
+    //몇개 넘어오냐?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return moives.count
+    }
+    //어떻게 표현할거니?
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else{
+            return UICollectionViewCell()
+        }
+        let movie = moives[indexPath.item]
+        //외부 코드 가져다 쓰기 Swift Package Manager 또는 Cocoapod 또는 Carthage 이용
+        let url = URL(string: movie.thumbnailPath)
+        cell.movieThumnail.kf.setImage(with: url)
+        return cell
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegate{
     
 }
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let margin: CGFloat = 8
+        let itemSpaicing: CGFloat = 10
+        
+        let width = (collectionView.bounds.width - margin * 2 - itemSpaicing * 2)/3
+        let height = width * 10/7
+        return CGSize(width: width, height: height)
+    }
+}
+
+class ResultCell: UICollectionViewCell{
+    @IBOutlet weak var movieThumnail: UIImageView!
+}
+
 
 extension SearchViewController: UISearchBarDelegate{
     //키보드가 올라와 있을 때 내려가게 처리
@@ -37,6 +77,10 @@ extension SearchViewController: UISearchBarDelegate{
         // - [x] 결과를 받아올 모델 Movie, Response
         // - 결과를 받아와서, CollectionView로 표현해주자.
         SearchAPI.search(searchTerm){ movies in
+            DispatchQueue.main.async {
+                self.moives = movies
+                self.resultCollectionView.reloadData()
+            }
             print("-->몇개 넘어왔어?: \(movies.count), 첫번째꺼 제목: \(movies.first?.title)")
         }
     
@@ -51,7 +95,7 @@ class SearchAPI{
         var urlComponents = URLComponents(string: "https://itunes.apple.com/search?")!
         let mediaQuery = URLQueryItem(name: "media", value: "movie")
         let entityQuery = URLQueryItem(name: "entity", value: "movie")
-        let termQuery = URLQueryItem(name: "term", value: "movie")
+        let termQuery = URLQueryItem(name: "term", value: term)
         urlComponents.queryItems?.append(mediaQuery)
         urlComponents.queryItems?.append(entityQuery)
         urlComponents.queryItems?.append(termQuery)
@@ -70,7 +114,8 @@ class SearchAPI{
             }
             // data -> [Movie]
             let movies = SearchAPI.parseMovies(resultData)
-            completion(movies)        }
+            completion(movies)
+        }
         dataTask.resume()
     }
     
