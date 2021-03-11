@@ -248,16 +248,42 @@
             <objects>
                 <viewController id="Blf-Or-i5j" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ce7-Bh-AkS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfp-Oh-lf2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="1473"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGi-R5-PTT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zGi-R5-PTT" secondAttribute="trailing" id="BGX-g2-OaP"/>
+                                    <constraint firstAttribute="bottom" secondItem="zGi-R5-PTT" secondAttribute="bottom" constant="8" id="IQe-hQ-Edg"/>
+                                    <constraint firstItem="zGi-R5-PTT" firstAttribute="leading" secondItem="kfp-Oh-lf2" secondAttribute="leading" id="gms-OK-q15"/>
+                                    <constraint firstItem="zGi-R5-PTT" firstAttribute="top" secondItem="kfp-Oh-lf2" secondAttribute="top" id="zBp-FS-Aal"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cEW-rw-DWC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kfp-Oh-lf2" firstAttribute="top" secondItem="cEW-rw-DWC" secondAttribute="top" id="6eO-2i-SUv"/>
+                            <constraint firstItem="cEW-rw-DWC" firstAttribute="trailing" secondItem="kfp-Oh-lf2" secondAttribute="trailing" id="D8c-mI-mce"/>
+                            <constraint firstItem="zGi-R5-PTT" firstAttribute="width" secondItem="ce7-Bh-AkS" secondAttribute="width" id="DnW-fl-ReM"/>
+                            <constraint firstItem="cEW-rw-DWC" firstAttribute="bottom" secondItem="kfp-Oh-lf2" secondAttribute="bottom" id="c3a-qF-WaE"/>
+                            <constraint firstItem="kfp-Oh-lf2" firstAttribute="leading" secondItem="cEW-rw-DWC" secondAttribute="leading" id="cmZ-ea-7pG"/>
+                            <constraint firstItem="zGi-R5-PTT" firstAttribute="height" secondItem="ce7-Bh-AkS" secondAttribute="height" priority="250" id="fow-wI-ZYT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="공개예정" image="play.rectangle.fill" catalog="system" id="pxU-OE-cdZ"/>
+                    <size key="freeformSize" width="414" height="1600"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J18-X4-5SI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3001" y="990"/>
+            <point key="canvasLocation" x="3049" y="1211"/>
         </scene>
         <!--더보기-->
         <scene sceneID="Lca-zO-Qyt">
