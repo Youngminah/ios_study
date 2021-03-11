@@ -1,24 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Firebase101" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first Data!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prc-HL-H3Z">
+                                <rect key="frame" x="167" y="104" width="80" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Customers: 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjQ-40-fdh">
+                                <rect key="frame" x="108" y="170" width="198" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvP-tf-BHp">
+                                <rect key="frame" x="164" y="285" width="86" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="CREATE"/>
+                                <connections>
+                                    <action selector="createCustomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NMy-gL-WRH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ra9-mW-hEE">
+                                <rect key="frame" x="176.5" y="360" width="61" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="READ"/>
+                                <connections>
+                                    <action selector="fetchCustomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHN-vD-GnI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffl-PB-r6p">
+                                <rect key="frame" x="162.5" y="458" width="89" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="UPDATE"/>
+                                <connections>
+                                    <action selector="updateCustomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DUd-ty-hhQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGF-YW-G4q">
+                                <rect key="frame" x="164.5" y="542" width="85" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="DELETE"/>
+                                <connections>
+                                    <action selector="deleteCustomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqn-KK-Eot"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Prc-HL-H3Z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8c0-wU-eam"/>
+                            <constraint firstItem="wvP-tf-BHp" firstAttribute="centerX" secondItem="EjQ-40-fdh" secondAttribute="centerX" id="91p-Ck-6az"/>
+                            <constraint firstItem="Prc-HL-H3Z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="D2T-oG-Opv"/>
+                            <constraint firstItem="Ra9-mW-hEE" firstAttribute="top" secondItem="wvP-tf-BHp" secondAttribute="bottom" constant="34" id="Hj2-AV-ZjE"/>
+                            <constraint firstItem="aGF-YW-G4q" firstAttribute="top" secondItem="ffl-PB-r6p" secondAttribute="bottom" constant="43" id="RAf-Xf-HcP"/>
+                            <constraint firstItem="ffl-PB-r6p" firstAttribute="top" secondItem="Ra9-mW-hEE" secondAttribute="bottom" constant="57" id="Wfb-2b-B2Y"/>
+                            <constraint firstItem="wvP-tf-BHp" firstAttribute="top" secondItem="EjQ-40-fdh" secondAttribute="bottom" constant="94" id="b2O-hP-mYb"/>
+                            <constraint firstItem="Ra9-mW-hEE" firstAttribute="centerX" secondItem="wvP-tf-BHp" secondAttribute="centerX" id="dlW-uB-KQc"/>
+                            <constraint firstItem="EjQ-40-fdh" firstAttribute="top" secondItem="Prc-HL-H3Z" secondAttribute="bottom" constant="45" id="euD-bR-Plf"/>
+                            <constraint firstItem="aGF-YW-G4q" firstAttribute="centerX" secondItem="ffl-PB-r6p" secondAttribute="centerX" id="jM0-rs-W0L"/>
+                            <constraint firstItem="ffl-PB-r6p" firstAttribute="centerX" secondItem="Ra9-mW-hEE" secondAttribute="centerX" id="wEs-SR-bDU"/>
+                            <constraint firstItem="EjQ-40-fdh" firstAttribute="centerX" secondItem="Prc-HL-H3Z" secondAttribute="centerX" id="yep-zp-EBe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="firstData" destination="Prc-HL-H3Z" id="IAf-Rq-fUI"/>
+                        <outlet property="numOfCustomers" destination="EjQ-40-fdh" id="moa-SD-zaP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-204" y="60"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

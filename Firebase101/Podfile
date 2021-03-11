@@ -3,4 +3,5 @@
 
 target 'Firebase101' do
 	pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
 end
