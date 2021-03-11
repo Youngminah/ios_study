@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import AVFoundation
 
 class SearchViewController: UIViewController {
 
@@ -40,14 +41,27 @@ extension SearchViewController: UICollectionViewDataSource{
 }
 
 extension SearchViewController: UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //movie
+        //player vc
+        //player vc + moive
+        //presenting player vc
+        let movie = moives[indexPath.item]
+        let url = URL(string: movie.previewURL)!
+        let item = AVPlayerItem(url: url)
+        
+        let sb = UIStoryboard(name: "Player", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.player.replaceCurrentItem(with: item)
+        present(vc, animated: false, completion: nil)
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let margin: CGFloat = 8
         let itemSpaicing: CGFloat = 10
-        
         let width = (collectionView.bounds.width - margin * 2 - itemSpaicing * 2)/3
         let height = width * 10/7
         return CGSize(width: width, height: height)
@@ -83,8 +97,6 @@ extension SearchViewController: UISearchBarDelegate{
             }
             print("-->몇개 넘어왔어?: \(movies.count), 첫번째꺼 제목: \(movies.first?.title)")
         }
-    
-        
     }
 }
 
