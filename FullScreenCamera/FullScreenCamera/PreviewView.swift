@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+//구글 문서에 AVCam에 작성된 코드
+
 class PreviewView: UIView {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         guard let layer = layer as? AVCaptureVideoPreviewLayer else {
