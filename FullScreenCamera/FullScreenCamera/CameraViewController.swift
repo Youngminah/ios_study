@@ -25,7 +25,7 @@ class CameraViewController: UIViewController {
     
     let sessionQueue = DispatchQueue(label: "session Queue")
     // deviceType은 뒤에 카메라가 두개인지 등등 정보, position은 후면카메라인지 전면카메라인지.
-    let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .back)
+    let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .unspecified)
     
     @IBOutlet weak var photoLibraryButton: UIButton!
     @IBOutlet weak var previewView: PreviewView!
@@ -106,8 +106,13 @@ class CameraViewController: UIViewController {
                     }
                     self.captureSession.commitConfiguration()
                     
-                } catch {
+                    DispatchQueue.main.async {
+                        //UI관련 작업이라 mainQueue에서 일어난다.
+                        self.updateSwitchCameraIcon(position: preferredPosition)
+                    }
                     
+                } catch let error {
+                    print("카메라 바꾸고 업데이트 처리에서 에러 발생 \(error.localizedDescription)")
                 }
                 
             }
@@ -117,12 +122,32 @@ class CameraViewController: UIViewController {
     
     func updateSwitchCameraIcon(position: AVCaptureDevice.Position) {
         // TODO: Update ICON
-        
+        switch  position {
+        case .front:
+            let image = #imageLiteral(resourceName: "ic_camera_front")
+            switchButton.setImage(image, for: .normal)
+        case .back:
+            let image = #imageLiteral(resourceName: "ic_camera_rear")
+            switchButton.setImage(image, for: .normal)
+        default :
+            break
+        }
         
     }
     
+    // MARK: 사진찍고 저장하기
     @IBAction func capturePhoto(_ sender: UIButton) {
         // TODO: photoOutput의 capturePhoto 메소드
+        // orientation
+        // photooutput
+        
+        let videoPreviewLayerOrientation = self.previewView.videoPreviewLayer.connection?.videoOrientation
+        sessionQueue.async {
+            let connection = self.photoOutput.connection(with: .video)
+            connection?.videoOrientation = videoPreviewLayerOrientation!
+            let setting = AVCapturePhotoSettings()
+            self.photoOutput.capturePhoto(with: setting, delegate: self) //사진찍는 메소드 delegate는 사진찍는 단계를 설정. 밑에서 재구현
+        }
 
 
     }
@@ -130,6 +155,19 @@ class CameraViewController: UIViewController {
     
     func savePhotoLibrary(image: UIImage) {
         // TODO: capture한 이미지 포토라이브러리에 저장
+        PHPhotoLibrary.requestAuthorization { (status) in
+            if status == .authorized {
+                //저장
+                PHPhotoLibrary.shared().performChanges( {
+                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                }) { (success, error) in
+                    print("--> 이미지 저장완료 했나? \(status)")
+                }
+            } else {
+                //다시 요청
+                print("--> 권한을 받지 못함")
+            }
+        }
     }
 }
 
@@ -159,6 +197,7 @@ extension CameraViewController {
             let videoDeviceInput = try AVCaptureDeviceInput(device: camera)
             if captureSession.canAddInput(videoDeviceInput){
                 captureSession.addInput(videoDeviceInput)
+                self.videoDeviceInput = videoDeviceInput
             } else{
                 captureSession.commitConfiguration()
                 return
@@ -207,9 +246,12 @@ extension CameraViewController {
 }
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    //보통 didfinishprocessingphoto를가지고 많이 구현.
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         // TODO: capturePhoto delegate method 구현
-        
-        
+        guard error == nil else { return }
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        guard let image = UIImage(data: imageData) else { return }
+        self.savePhotoLibrary(image: image)
     }
 }
