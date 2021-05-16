@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>FullScreen캠 uses the camera to take photos and video</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FullScreen캠 saves captured photos and videos to your photo library</string>
 </dict>
 </plist>
