@@ -67,7 +67,7 @@
 
 
 #### ▶︎ 실행화면
-<img src="https://github.com/Youngminah/ios_study/blob/master/gif/netflix.mov.gif" title="phone book gif" width="30%"/>
+<img src="https://github.com/Youngminah/ios_study/blob/master/gif/netflix.mov.gif" title="phone book gif" width="50%"/>
 
 
 <br></br>
