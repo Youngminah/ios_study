@@ -1,3 +1,7 @@
+<br></br>
+<br></br>
+
+
 # iOS개발을 위한 연습용 앱
 
 패스트캠퍼스 iOS과정.
@@ -67,7 +71,7 @@
 
 
 #### ▶︎ 실행화면
-<img src="https://github.com/Youngminah/ios_study/blob/master/gif/netflix.mov.gif" title="phone book gif" width="50%"/>
+<img src="https://github.com/Youngminah/ios_study/blob/master/gif/netflix.mov.gif" title="phone book gif" width="60%"/>
 
 
 <br></br>
