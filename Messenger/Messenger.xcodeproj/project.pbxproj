@@ -15,6 +15,7 @@
 		BB11EDB8267A0C3F009CD0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB11EDB6267A0C3F009CD0AB /* LaunchScreen.storyboard */; };
 		BB4D9F35267A52E80099620B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D9F34267A52E80099620B /* Extensions.swift */; };
 		BB4D9F39267CCB820099620B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4D9F38267CCB820099620B /* GoogleService-Info.plist */; };
+		BB4D9F3B267CDB380099620B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D9F3A267CDB380099620B /* DatabaseManager.swift */; };
 		BB7A463E267A37DB00267103 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A463D267A37DB00267103 /* LoginViewController.swift */; };
 		BB7A4641267A37EB00267103 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A4640267A37EB00267103 /* RegisterViewController.swift */; };
 		BB7A4644267A380800267103 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A4643267A380800267103 /* PhotoViewerViewController.swift */; };
@@ -36,6 +37,7 @@
 		BB11EDB9267A0C3F009CD0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB4D9F34267A52E80099620B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BB4D9F38267CCB820099620B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB4D9F3A267CDB380099620B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		BB7A463D267A37DB00267103 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BB7A4640267A37EB00267103 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BB7A4643267A380800267103 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				BB11EDAB267A0C3D009CD0AB /* AppDelegate.swift */,
 				BB11EDAD267A0C3D009CD0AB /* SceneDelegate.swift */,
 				BB4D9F34267A52E80099620B /* Extensions.swift */,
+				BB4D9F3A267CDB380099620B /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB7A463E267A37DB00267103 /* LoginViewController.swift in Sources */,
+				BB4D9F3B267CDB380099620B /* DatabaseManager.swift in Sources */,
 				BB7A4641267A37EB00267103 /* RegisterViewController.swift in Sources */,
 				BB7A464A267A385600267103 /* NewConversationViewController.swift in Sources */,
 				BB11EDB0267A0C3D009CD0AB /* ConversationsViewController.swift in Sources */,
